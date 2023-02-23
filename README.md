@@ -85,14 +85,17 @@ https://open-cluster-management.io/getting-started/quick-start/
 
 ### Requirements
 
--  kind(greater than v0.9.0+, or the latest version is preferred)
--  _kubectl_ and _kustomize_
+- docker
+- kind(greater than v0.9.0+, or the latest version is preferred)
+- _kubectl_ and _kustomize_
     - https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
-    - https://kubectl.docs.kubernetes.io/installation/kustomize/source/
+    - https://kubectl.docs.kubernetes.io/installation/kustomize/source/ (requires **GOLANG**)
 
 ### Installation
 
-
+```
+curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/solutions/setup-dev-environment/local-up.sh | bash
+```
 
 ----------------------------
 
