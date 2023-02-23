@@ -121,6 +121,12 @@ curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/so
 
 https://github.com/clusternet/clusternet
 
+### VScode Extension
+
+The OCM VScode Extension is a UI tool for OCM related Kubernetes resources. The extension has been built upon Visual Studio Code and offers additional OCM administrative and monitoring features in order to improve operational efficiency and accelerate development within engineering teams.
+
+https://open-cluster-management.io/developer-guides/vscode-extension/
+
 ----------------------------
 
 ## Openwhisk
