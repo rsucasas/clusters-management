@@ -95,6 +95,8 @@ https://open-cluster-management.io/getting-started/quick-start/
 - _kubectl_ and _kustomize_
     - https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
     - https://kubectl.docs.kubernetes.io/installation/kustomize/source/ (requires **GOLANG**)
+- clusteradm
+    - https://github.com/open-cluster-management-io/clusteradm
 
 ### Installation
 
