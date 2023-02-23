@@ -66,6 +66,10 @@ go version
 
 ## Kind
 
+### Repo
+
+https://github.com/kubernetes-sigs/kind
+
 ### Requirements
 
 - Golang
@@ -88,6 +92,10 @@ go install sigs.k8s.io/kind@v0.17.0 && kind create cluster
 
 https://open-cluster-management.io/getting-started/quick-start/
 
+### Repo
+
+https://github.com/open-cluster-management-io
+
 ### Requirements
 
 - docker
@@ -103,6 +111,10 @@ https://open-cluster-management.io/getting-started/quick-start/
 ```
 curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/solutions/setup-dev-environment/local-up.sh | bash
 ```
+
+### clusternet
+
+https://github.com/clusternet/clusternet
 
 ----------------------------
 
