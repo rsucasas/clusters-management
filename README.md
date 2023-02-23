@@ -64,7 +64,10 @@ go version
 
 ----------------------------
 
-## Kind
+## [Kind](https://kind.sigs.k8s.io/)
+
+kind is a tool for running local Kubernetes clusters using Docker container “nodes”.
+kind was primarily designed for testing Kubernetes itself, but may be used for local development or CI.
 
 ### Repo
 
@@ -88,7 +91,9 @@ go install sigs.k8s.io/kind@v0.17.0 && kind create cluster
 
 ----------------------------
 
-## OCM
+## [OCM](https://open-cluster-management.io/)
+
+Open Cluster Management is a community-driven project focused on multicluster and multicloud scenarios for Kubernetes apps. Open APIs are evolving within this project for cluster registration, work distribution, dynamic placement of policies and workloads, and much more.
 
 https://open-cluster-management.io/getting-started/quick-start/
 
