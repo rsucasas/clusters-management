@@ -11,6 +11,30 @@ Vagrant.configure("2") do |config|
 end
 ```
 
+#### Docker
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
+
+```
+sudo apt update
+
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+
+apt-cache policy docker-ce
+
+sudo apt install docker-ce
+
+sudo systemctl status docker
+
+sudo usermod -aG docker ${USER}
+su - ${USER}
+groups
+```
+
 #### Golang
 
 https://tecadmin.net/how-to-install-go-on-ubuntu-20-04/
@@ -39,11 +63,34 @@ go version
 
 ### Requirements
 
+- Golang
+- Docker
 
+### Installation
+
+```
+go install sigs.k8s.io/kind@v0.17.0 && kind create cluster
+```
+
+## HELM
+
+
+## WSK (Openwhisk CLI)
 
 ----------------------------
 
 ## OCM
+
+https://open-cluster-management.io/getting-started/quick-start/
+
+### Requirements
+
+-  kind(greater than v0.9.0+, or the latest version is preferred)
+-  _kubectl_ and _kustomize_
+    - https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+    - https://kubectl.docs.kubernetes.io/installation/kustomize/source/
+
+### Installation
 
 
 
