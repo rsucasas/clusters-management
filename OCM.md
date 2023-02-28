@@ -1,5 +1,7 @@
 ### INSTALLATION OUTPUT
 
+To install OCM execute the following command:
+
 ```
 $ curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/solutions/setup-dev-environment/local-up.sh | bash
 ```
@@ -102,6 +104,8 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 
 ----------------------------------------
 
+Content after OCM installation
+
 ```
 $ kubectl get all --all-namespaces
 ```
@@ -148,6 +152,8 @@ open-cluster-management         replicaset.apps/klusterlet-6555776c99           
 ```
 
 ### OTHER COMMANDS
+
+Get all clusters created with **kind**
 
 ```
 $ kind get clusters**
@@ -263,9 +269,14 @@ $ clusteradm get clusters
 
 --------------------------------------
 
+```
 $ clusteradm get token --context kind-hub
 token=eyJhbGciOiJSUzI1NiIsImtpZCI6IklRT0ZnUjVlY0dCbW5xYWxycVNVcnN1TWpzMDFuOHd0OUs4MmdNVzRldDAifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NDk0MjIzLCJpYXQiOjE2Nzc0OTA2MjMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJvcGVuLWNsdXN0ZXItbWFuYWdlbWVudCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJjbHVzdGVyLWJvb3RzdHJhcCIsInVpZCI6Ijk0ZTQ2NDEwLTg3MDctNDMzNC1iZGNmLTZhMjA4ZTE4YzIyYiJ9fSwibmJmIjoxNjc3NDkwNjIzLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6b3Blbi1jbHVzdGVyLW1hbmFnZW1lbnQ6Y2x1c3Rlci1ib290c3RyYXAifQ.U0txuClG_lg_Py51SedBZDlpY3tZOBMS8-DR25eiQ0hfmUDqUEGxnzFtJrNYvlTSVWc6UNh_kXGhE6ROGe5otalJWxRtYWDWcq9d3rVl53nj83qFWBbmKgba-6bAO4ToFXtTJ2nDscfkmY1mQ2YPs6sjrvU_Lh-woGiQ_gmUspUz8KWCG4iHKRgYz7JzmngCQYFKDJNq0-Dce-OJuqKuZ-KDNAWAvx89IC1YpYO_Owy6AZjTZFR36KYRkfV8QMmewRBx_ewYyI0oRZ2DCHn3fDqShcfA2bT7X8KYYINMJPQhFlYeyWgLCyQ1NB_CnRqq5yPSvVzhHqqhuZnvdqQGNA
+```
+
+```
 please log on spoke and run:
 clusteradm join --hub-token eyJhbGciOiJSUzI1NiIsImtpZCI6IklRT0ZnUjVlY0dCbW5xYWxycVNVcnN1TWpzMDFuOHd0OUs4MmdNVzRldDAifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NDk0MjIzLCJpYXQiOjE2Nzc0OTA2MjMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJvcGVuLWNsdXN0ZXItbWFuYWdlbWVudCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJjbHVzdGVyLWJvb3RzdHJhcCIsInVpZCI6Ijk0ZTQ2NDEwLTg3MDctNDMzNC1iZGNmLTZhMjA4ZTE4YzIyYiJ9fSwibmJmIjoxNjc3NDkwNjIzLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6b3Blbi1jbHVzdGVyLW1hbmFnZW1lbnQ6Y2x1c3Rlci1ib290c3RyYXAifQ.U0txuClG_lg_Py51SedBZDlpY3tZOBMS8-DR25eiQ0hfmUDqUEGxnzFtJrNYvlTSVWc6UNh_kXGhE6ROGe5otalJWxRtYWDWcq9d3rVl53nj83qFWBbmKgba-6bAO4ToFXtTJ2nDscfkmY1mQ2YPs6sjrvU_Lh-woGiQ_gmUspUz8KWCG4iHKRgYz7JzmngCQYFKDJNq0-Dce-OJuqKuZ-KDNAWAvx89IC1YpYO_Owy6AZjTZFR36KYRkfV8QMmewRBx_ewYyI0oRZ2DCHn3fDqShcfA2bT7X8KYYINMJPQhFlYeyWgLCyQ1NB_CnRqq5yPSvVzhHqqhuZnvdqQGNA --hub-apiserver https://127.0.0.1:45293 --cluster-name <cluster_name>
+```
 
 
