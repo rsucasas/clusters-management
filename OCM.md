@@ -1,7 +1,7 @@
 ### INSTALLATION OUTPUT
 
 ```
-curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/solutions/setup-dev-environment/local-up.sh | bash
+$ curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/solutions/setup-dev-environment/local-up.sh | bash
 ```
 
 ```
@@ -103,7 +103,7 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ----------------------------------------
 
 ```
-kubectl get all --all-namespaces
+$ kubectl get all --all-namespaces
 ```
 
 ```
@@ -169,7 +169,7 @@ $ kubectl cluster-info --context kind-hub
 --------------------------------------
 
 ```
-kubectl -n open-cluster-management get pod --context kind-hub
+$ kubectl -n open-cluster-management get pod --context kind-hub
 ```
 
     NAME                               READY   STATUS    RESTARTS      AGE
@@ -190,7 +190,7 @@ kubectl -n open-cluster-management get pod --context kind-hub
 --------------------------------------
 
 ```
-clusteradm init --wait --context kind-hub
+$ clusteradm init --wait --context kind-hub
 ```
 
     CRD successfully registered.
@@ -207,7 +207,7 @@ clusteradm init --wait --context kind-hub
 --------------------------------------
 
 ```
-clusteradm join --hub-token eyJhbGciOiJSUzI1NiIsImtpZCI6IklRT0ZnUjVlY0dCbW5xYWxycVNVcnN1TWpzMDFuOHd0OUs4MmdNVzRldDAifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NDkzNjc3LCJpYXQiOjE2Nzc0OTAwNzcsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJvcGVuLWNsdXN0ZXItbWFuYWdlbWVudCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJjbHVzdGVyLWJvb3RzdHJhcCIsInVpZCI6Ijk0ZTQ2NDEwLTg3MDctNDMzNC1iZGNmLTZhMjA4ZTE4YzIyYiJ9fSwibmJmIjoxNjc3NDkwMDc3LCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6b3Blbi1jbHVzdGVyLW1hbmFnZW1lbnQ6Y2x1c3Rlci1ib290c3RyYXAifQ.p-h0d87RYGZUByff_yYV9aMcA4tW5C1WJfsmye8w0w5-N8brLWbO1VAFWKJbeWw2yaq37ylZsPOPI3u8cgTbmyRAiK75ZbdTfLY5WZoCnX5phHIgznVm8ipIJjIto4pCxAVVFRapOh08osFUoxLSABG4VcmnbTEjq3IMo_81Q16jlpqCYle7WVOOubu1gLVLQ8dVsT8-5Xlfl5UDYXRhZuM0B4Nbzr-5dbfwwT0RCwqY4_4Nw6kwZRtG_XjqZDRGvcPLTsB23Nts76HSamx3Y0xDLDizQxwfBCrGA9vIlB3IMq1vZhteGWO5oFz7w3-YRUbHxKxG_Pi23E_ljjAuDA --hub-apiserver https://127.0.0.1:45293 --wait --cluster-name cluster1
+$ clusteradm join --hub-token eyJhbGciOiJSUzI1NiIsImtpZCI6IklRT0ZnUjVlY0dCbW5xYWxycVNVcnN1TWpzMDFuOHd0OUs4MmdNVzRldDAifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NDkzNjc3LCJpYXQiOjE2Nzc0OTAwNzcsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJvcGVuLWNsdXN0ZXItbWFuYWdlbWVudCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJjbHVzdGVyLWJvb3RzdHJhcCIsInVpZCI6Ijk0ZTQ2NDEwLTg3MDctNDMzNC1iZGNmLTZhMjA4ZTE4YzIyYiJ9fSwibmJmIjoxNjc3NDkwMDc3LCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6b3Blbi1jbHVzdGVyLW1hbmFnZW1lbnQ6Y2x1c3Rlci1ib290c3RyYXAifQ.p-h0d87RYGZUByff_yYV9aMcA4tW5C1WJfsmye8w0w5-N8brLWbO1VAFWKJbeWw2yaq37ylZsPOPI3u8cgTbmyRAiK75ZbdTfLY5WZoCnX5phHIgznVm8ipIJjIto4pCxAVVFRapOh08osFUoxLSABG4VcmnbTEjq3IMo_81Q16jlpqCYle7WVOOubu1gLVLQ8dVsT8-5Xlfl5UDYXRhZuM0B4Nbzr-5dbfwwT0RCwqY4_4Nw6kwZRtG_XjqZDRGvcPLTsB23Nts76HSamx3Y0xDLDizQxwfBCrGA9vIlB3IMq1vZhteGWO5oFz7w3-YRUbHxKxG_Pi23E_ljjAuDA --hub-apiserver https://127.0.0.1:45293 --wait --cluster-name cluster1
 ```
 
     CRD successfully registered.
@@ -223,19 +223,25 @@ clusteradm join --hub-token eyJhbGciOiJSUzI1NiIsImtpZCI6IklRT0ZnUjVlY0dCbW5xYWxy
 ## Login into cluster
 
 ```
-kubectl config use-context kind-hub
+$ kubectl config use-context kind-hub
 ```
 
 Switched to context "kind-hub".
 
+Accept managed clusters:
+
 ```
-clusteradm accept --clusters cluster1
-clusteradm accept --clusters cluster2
+$ clusteradm accept --clusters cluster1
+$ clusteradm accept --clusters cluster2
 ```
 
 --------------------------------------
 
+```
 $ clusteradm get clusters
+```
+
+```
 <ManagedCluster>
 └── <cluster1>
 │   ├── <Accepted> true
@@ -253,6 +259,7 @@ $ clusteradm get clusters
     └── <Capacity>
         └── <Cpu> 4
         └── <Memory> 8148284Ki
+```
 
 --------------------------------------
 
