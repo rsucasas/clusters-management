@@ -154,7 +154,9 @@ $ kind get clusters
 ```
 
 >  cluster1
+>  
 >  cluster2
+>  
 >  hub
 
 --------------------------------------
