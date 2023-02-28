@@ -163,8 +163,8 @@ $ kind get clusters
 
 $ kubectl cluster-info --context kind-hub
 
-  Kubernetes control plane is running at https://127.0.0.1:45293
-  CoreDNS is running at https://127.0.0.1:45293/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+    Kubernetes control plane is running at https://127.0.0.1:45293
+    CoreDNS is running at https://127.0.0.1:45293/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
 --------------------------------------
 
