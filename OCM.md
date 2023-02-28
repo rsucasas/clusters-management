@@ -153,9 +153,9 @@ open-cluster-management         replicaset.apps/klusterlet-6555776c99           
 $ kind get clusters
 ```
 
-|  cluster1
-|  cluster2
-|  hub
+>  cluster1
+>  cluster2
+>  hub
 
 --------------------------------------
 
