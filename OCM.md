@@ -149,7 +149,9 @@ open-cluster-management         replicaset.apps/klusterlet-6555776c99           
 
 ### OTHER COMMANDS
 
-    **$ kind get clusters**
+```
+$ kind get clusters**
+```
 
     cluster1
     cluster2 
@@ -157,7 +159,7 @@ open-cluster-management         replicaset.apps/klusterlet-6555776c99           
 
 --------------------------------------
 
-```bash
+```
 $ kubectl cluster-info --context kind-hub
 ```
 
@@ -166,46 +168,54 @@ $ kubectl cluster-info --context kind-hub
 
 --------------------------------------
 
-$ kubectl -n open-cluster-management get pod --context kind-hub
-NAME                               READY   STATUS    RESTARTS      AGE
-cluster-manager-79dcdf496f-7tsxs   1/1     Running   8 (11m ago)   3d22h
+```
+kubectl -n open-cluster-management get pod --context kind-hub
+```
 
-$ kubectl -n open-cluster-management get pod --context kind-cluster1
-NAME                          READY   STATUS    RESTARTS      AGE
-klusterlet-6555776c99-2drw7   1/1     Running   7 (63m ago)   3d22h
-klusterlet-6555776c99-fhtcx   1/1     Running   7 (63m ago)   3d22h
-klusterlet-6555776c99-rsh9h   1/1     Running   7 (63m ago)   3d22h
+    NAME                               READY   STATUS    RESTARTS      AGE
+    cluster-manager-79dcdf496f-7tsxs   1/1     Running   8 (11m ago)   3d22h
 
-$ kubectl -n open-cluster-management get pod --context kind-cluster2
-NAME                          READY   STATUS    RESTARTS      AGE
-klusterlet-6555776c99-bzhph   1/1     Running   6 (63m ago)   3d22h
-klusterlet-6555776c99-g6h4z   1/1     Running   6 (63m ago)   3d22h
-klusterlet-6555776c99-gnccb   1/1     Running   6 (64m ago)   3d22h
+    $ kubectl -n open-cluster-management get pod --context kind-cluster1
+    NAME                          READY   STATUS    RESTARTS      AGE
+    klusterlet-6555776c99-2drw7   1/1     Running   7 (63m ago)   3d22h
+    klusterlet-6555776c99-fhtcx   1/1     Running   7 (63m ago)   3d22h
+    klusterlet-6555776c99-rsh9h   1/1     Running   7 (63m ago)   3d22h
 
---------------------------------------
-
-$ clusteradm init --wait --context kind-hub
-
-CRD successfully registered.
-Registration operator is now available.
-ClusterManager registration is now available.
-The multicluster hub control plane has been initialized successfully!
-
-You can now register cluster(s) to the hub control plane. Log onto those cluster(s) and run the following command:
-
-    clusteradm join --hub-token eyJhbGciOiJSUzI1NiIsImtpZCI6IklRT0ZnUjVlY0dCbW5xYWxycVNVcnN1TWpzMDFuOHd0OUs4MmdNVzRldDAifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NDkzNjc3LCJpYXQiOjE2Nzc0OTAwNzcsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJvcGVuLWNsdXN0ZXItbWFuYWdlbWVudCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJjbHVzdGVyLWJvb3RzdHJhcCIsInVpZCI6Ijk0ZTQ2NDEwLTg3MDctNDMzNC1iZGNmLTZhMjA4ZTE4YzIyYiJ9fSwibmJmIjoxNjc3NDkwMDc3LCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6b3Blbi1jbHVzdGVyLW1hbmFnZW1lbnQ6Y2x1c3Rlci1ib290c3RyYXAifQ.p-h0d87RYGZUByff_yYV9aMcA4tW5C1WJfsmye8w0w5-N8brLWbO1VAFWKJbeWw2yaq37ylZsPOPI3u8cgTbmyRAiK75ZbdTfLY5WZoCnX5phHIgznVm8ipIJjIto4pCxAVVFRapOh08osFUoxLSABG4VcmnbTEjq3IMo_81Q16jlpqCYle7WVOOubu1gLVLQ8dVsT8-5Xlfl5UDYXRhZuM0B4Nbzr-5dbfwwT0RCwqY4_4Nw6kwZRtG_XjqZDRGvcPLTsB23Nts76HSamx3Y0xDLDizQxwfBCrGA9vIlB3IMq1vZhteGWO5oFz7w3-YRUbHxKxG_Pi23E_ljjAuDA --hub-apiserver https://127.0.0.1:45293 --wait --cluster-name <cluster_name>
-
-Replace <cluster_name> with a cluster name of your choice. For example, cluster1.
+    $ kubectl -n open-cluster-management get pod --context kind-cluster2
+    NAME                          READY   STATUS    RESTARTS      AGE
+    klusterlet-6555776c99-bzhph   1/1     Running   6 (63m ago)   3d22h
+    klusterlet-6555776c99-g6h4z   1/1     Running   6 (63m ago)   3d22h
+    klusterlet-6555776c99-gnccb   1/1     Running   6 (64m ago)   3d22h
 
 --------------------------------------
 
-$ clusteradm join --hub-token eyJhbGciOiJSUzI1NiIsImtpZCI6IklRT0ZnUjVlY0dCbW5xYWxycVNVcnN1TWpzMDFuOHd0OUs4MmdNVzRldDAifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NDkzNjc3LCJpYXQiOjE2Nzc0OTAwNzcsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJvcGVuLWNsdXN0ZXItbWFuYWdlbWVudCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJjbHVzdGVyLWJvb3RzdHJhcCIsInVpZCI6Ijk0ZTQ2NDEwLTg3MDctNDMzNC1iZGNmLTZhMjA4ZTE4YzIyYiJ9fSwibmJmIjoxNjc3NDkwMDc3LCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6b3Blbi1jbHVzdGVyLW1hbmFnZW1lbnQ6Y2x1c3Rlci1ib290c3RyYXAifQ.p-h0d87RYGZUByff_yYV9aMcA4tW5C1WJfsmye8w0w5-N8brLWbO1VAFWKJbeWw2yaq37ylZsPOPI3u8cgTbmyRAiK75ZbdTfLY5WZoCnX5phHIgznVm8ipIJjIto4pCxAVVFRapOh08osFUoxLSABG4VcmnbTEjq3IMo_81Q16jlpqCYle7WVOOubu1gLVLQ8dVsT8-5Xlfl5UDYXRhZuM0B4Nbzr-5dbfwwT0RCwqY4_4Nw6kwZRtG_XjqZDRGvcPLTsB23Nts76HSamx3Y0xDLDizQxwfBCrGA9vIlB3IMq1vZhteGWO5oFz7w3-YRUbHxKxG_Pi23E_ljjAuDA --hub-apiserver https://127.0.0.1:45293 --wait --cluster-name cluster1
-CRD successfully registered.
-Registration operator is now available.
-Klusterlet is now available.
-Please log onto the hub cluster and run the following command:
+```
+clusteradm init --wait --context kind-hub
+```
 
-    clusteradm accept --clusters cluster1
+    CRD successfully registered.
+    Registration operator is now available.
+    ClusterManager registration is now available.
+    The multicluster hub control plane has been initialized successfully!
+
+    You can now register cluster(s) to the hub control plane. Log onto those cluster(s) and run the following command:
+
+        clusteradm join --hub-token eyJhbGciOiJSUzI1NiIsImtpZCI6IklRT0ZnUjVlY0dCbW5xYWxycVNVcnN1TWpzMDFuOHd0OUs4MmdNVzRldDAifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NDkzNjc3LCJpYXQiOjE2Nzc0OTAwNzcsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJvcGVuLWNsdXN0ZXItbWFuYWdlbWVudCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJjbHVzdGVyLWJvb3RzdHJhcCIsInVpZCI6Ijk0ZTQ2NDEwLTg3MDctNDMzNC1iZGNmLTZhMjA4ZTE4YzIyYiJ9fSwibmJmIjoxNjc3NDkwMDc3LCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6b3Blbi1jbHVzdGVyLW1hbmFnZW1lbnQ6Y2x1c3Rlci1ib290c3RyYXAifQ.p-h0d87RYGZUByff_yYV9aMcA4tW5C1WJfsmye8w0w5-N8brLWbO1VAFWKJbeWw2yaq37ylZsPOPI3u8cgTbmyRAiK75ZbdTfLY5WZoCnX5phHIgznVm8ipIJjIto4pCxAVVFRapOh08osFUoxLSABG4VcmnbTEjq3IMo_81Q16jlpqCYle7WVOOubu1gLVLQ8dVsT8-5Xlfl5UDYXRhZuM0B4Nbzr-5dbfwwT0RCwqY4_4Nw6kwZRtG_XjqZDRGvcPLTsB23Nts76HSamx3Y0xDLDizQxwfBCrGA9vIlB3IMq1vZhteGWO5oFz7w3-YRUbHxKxG_Pi23E_ljjAuDA --hub-apiserver https://127.0.0.1:45293 --wait --cluster-name <cluster_name>
+
+    Replace <cluster_name> with a cluster name of your choice. For example, cluster1.
+
+--------------------------------------
+
+```
+clusteradm join --hub-token eyJhbGciOiJSUzI1NiIsImtpZCI6IklRT0ZnUjVlY0dCbW5xYWxycVNVcnN1TWpzMDFuOHd0OUs4MmdNVzRldDAifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NDkzNjc3LCJpYXQiOjE2Nzc0OTAwNzcsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJvcGVuLWNsdXN0ZXItbWFuYWdlbWVudCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJjbHVzdGVyLWJvb3RzdHJhcCIsInVpZCI6Ijk0ZTQ2NDEwLTg3MDctNDMzNC1iZGNmLTZhMjA4ZTE4YzIyYiJ9fSwibmJmIjoxNjc3NDkwMDc3LCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6b3Blbi1jbHVzdGVyLW1hbmFnZW1lbnQ6Y2x1c3Rlci1ib290c3RyYXAifQ.p-h0d87RYGZUByff_yYV9aMcA4tW5C1WJfsmye8w0w5-N8brLWbO1VAFWKJbeWw2yaq37ylZsPOPI3u8cgTbmyRAiK75ZbdTfLY5WZoCnX5phHIgznVm8ipIJjIto4pCxAVVFRapOh08osFUoxLSABG4VcmnbTEjq3IMo_81Q16jlpqCYle7WVOOubu1gLVLQ8dVsT8-5Xlfl5UDYXRhZuM0B4Nbzr-5dbfwwT0RCwqY4_4Nw6kwZRtG_XjqZDRGvcPLTsB23Nts76HSamx3Y0xDLDizQxwfBCrGA9vIlB3IMq1vZhteGWO5oFz7w3-YRUbHxKxG_Pi23E_ljjAuDA --hub-apiserver https://127.0.0.1:45293 --wait --cluster-name cluster1
+```
+
+    CRD successfully registered.
+    Registration operator is now available.
+    Klusterlet is now available.
+    Please log onto the hub cluster and run the following command:
+
+        clusteradm accept --clusters cluster1
 
 
 --------------------------------------
