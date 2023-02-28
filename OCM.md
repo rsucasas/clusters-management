@@ -149,9 +149,7 @@ open-cluster-management         replicaset.apps/klusterlet-6555776c99           
 
 ### OTHER COMMANDS
 
-```bash
-$ kind get clusters
-```
+    **$ kind get clusters**
 
     cluster1
     cluster2 
