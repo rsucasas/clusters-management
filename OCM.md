@@ -279,4 +279,24 @@ please log on spoke and run:
 clusteradm join --hub-token eyJhbGciOiJSUzI1NiIsImtpZCI6IklRT0ZnUjVlY0dCbW5xYWxycVNVcnN1TWpzMDFuOHd0OUs4MmdNVzRldDAifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NDk0MjIzLCJpYXQiOjE2Nzc0OTA2MjMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJvcGVuLWNsdXN0ZXItbWFuYWdlbWVudCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJjbHVzdGVyLWJvb3RzdHJhcCIsInVpZCI6Ijk0ZTQ2NDEwLTg3MDctNDMzNC1iZGNmLTZhMjA4ZTE4YzIyYiJ9fSwibmJmIjoxNjc3NDkwNjIzLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6b3Blbi1jbHVzdGVyLW1hbmFnZW1lbnQ6Y2x1c3Rlci1ib290c3RyYXAifQ.U0txuClG_lg_Py51SedBZDlpY3tZOBMS8-DR25eiQ0hfmUDqUEGxnzFtJrNYvlTSVWc6UNh_kXGhE6ROGe5otalJWxRtYWDWcq9d3rVl53nj83qFWBbmKgba-6bAO4ToFXtTJ2nDscfkmY1mQ2YPs6sjrvU_Lh-woGiQ_gmUspUz8KWCG4iHKRgYz7JzmngCQYFKDJNq0-Dce-OJuqKuZ-KDNAWAvx89IC1YpYO_Owy6AZjTZFR36KYRkfV8QMmewRBx_ewYyI0oRZ2DCHn3fDqShcfA2bT7X8KYYINMJPQhFlYeyWgLCyQ1NB_CnRqq5yPSvVzhHqqhuZnvdqQGNA --hub-apiserver https://127.0.0.1:45293 --cluster-name <cluster_name>
 ```
 
+--------------------------------------
 
+```
+kubectl proxy --address 0.0.0.0 --accept-hosts '.*'
+
+clusteradm init --server 192.168.1.151:8001
+```
+
+```
+The multicluster hub control plane has been initialized successfully!
+
+You can now register cluster(s) to the hub control plane. Log onto those cluster(s) and run the following command:
+
+    clusteradm join --hub-token eyJhbGciOiJSUzI1NiIsImtpZCI6IklRT0ZnUjVlY0dCbW5xYWxycVNVcnN1TWpzMDFuOHd0OUs4MmdNVzRldDAifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3NzcyNjczLCJpYXQiOjE2Nzc3NjkwNzMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJvcGVuLWNsdXN0ZXItbWFuYWdlbWVudCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJjbHVzdGVyLWJvb3RzdHJhcCIsInVpZCI6Ijk0ZTQ2NDEwLTg3MDctNDMzNC1iZGNmLTZhMjA4ZTE4YzIyYiJ9fSwibmJmIjoxNjc3NzY5MDczLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6b3Blbi1jbHVzdGVyLW1hbmFnZW1lbnQ6Y2x1c3Rlci1ib290c3RyYXAifQ.WDugnwpaZpOtGb5f1DmVl-0n75dEgZ-6c4idfwdsklX8ZeWC7w9p6DnUs-gG3oDRFPzw9qrnnR8UWoyqZTi9y5FbenZ0YrdWMNk0luh7lx0-4u_2JZOoArni8bdbj49W72xR9Dps6zw99yTb3ktMcvypGDEc-slnB9OyeTcVBcJmRLlXJzGkJtsV60w1OhmRwM51uokjVn_7wlKvuqpOo-sIBArpqVEVL8s9OSlUFWDUErF-fxlSMqzCtriuAIcleMVjRibcCBrIMyTiQJXaP-fglwygVQCZ9HAKZNFW1ZHnlFgOtfibiOw2o_jztF_P_LAsSJ31ChcqB55JPX5h0Q --hub-apiserver 192.168.1.151:8001 --cluster-name <cluster_name>
+
+Replace <cluster_name> with a cluster name of your choice. For example, cluster1.
+```
+
+```
+
+```
