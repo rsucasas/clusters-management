@@ -275,7 +275,9 @@ create work my-first-work in cluster microk8s-cluster
 To remove application:
 
 ```
+clusteradm delete work my-first-work --cluster microk8s-cluster
 
+work my-first-work in cluster microk8s-cluster is deleted
 ```
 
 ### App deployment using Manifests
