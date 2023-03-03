@@ -15,13 +15,13 @@ end
 
 Once the virtual machines have been configured properly (kubectl, kind, clusteradm, etc) we can start to create the OCM multicluster test environment.
 
-**VM 1**: 8 GB of memory, 4 cpu cores; kind-cluster2 and kind-cluster1 
+**VM 1**: 8 GB of memory, 4 cpu cores; *kind-cluster2* and *kind-cluster1* 
 
-**VM 2**: 4 GB of memory, 2 cpu cores; microk8s-cluster
+**VM 2**: 4 GB of memory, 2 cpu cores; *microk8s-cluster*
 
 **VM 3**: 1 GB of memory, 2 cpu cores
 
-Clusters: microk8s-cluster, kind-cluster2 and kind-cluster1
+**Clusters**: *microk8s-cluster*, *kind-cluster2* and *kind-cluster1*
 
 ```
 <ManagedCluster>
