@@ -226,7 +226,9 @@ CURRENT   NAME                 CLUSTER              AUTHINFO             NAMESPA
 
 ## APPLICATION DEPLOYMENT (Nginx)
 
-### App deployment using **clusteradm** command
+### App deployment using 'clusteradm' command
+
+Application deployment in cluster **microk8s-cluster**
 
 1. create deployment file (_appdeployment.yaml_)
 
@@ -272,5 +274,98 @@ create work my-first-work in cluster microk8s-cluster
 
 ### App deployment using Manifests
 
+Application deployment in cluster **kind-cluster1**
 
+1. create manifest (_manifest.yaml_)
 
+```yaml
+apiVersion: work.open-cluster-management.io/v1
+kind: ManifestWork
+metadata:
+  namespace: kind-cluster1
+  name: example-manifestwork
+spec:
+  workload:
+    manifests:
+      - apiVersion: v1
+        kind: ServiceAccount
+        metadata:
+          namespace: default
+          name: my-sa
+      - apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          namespace: default
+          name: nginx-deployment
+          labels:
+            app: nginx
+        spec:
+          replicas: 3
+          selector:
+            matchLabels:
+              app: nginx
+          template:
+            metadata:
+              labels:
+                app: nginx
+            spec:
+              serviceAccountName: my-sa
+              containers:
+                - name: nginx
+                  image: nginx:1.14.2
+                  ports:
+                    - containerPort: 80
+```
+
+2. execute the following command
+
+```
+kubectl apply -f manifest.yaml
+
+manifestwork.work.open-cluster-management.io/example-manifestwork created
+```
+
+3. Check app
+
+```
+clusteradm get works --cluster kind-cluster1
+
+<ManifestWork>
+└── <example-manifestwork>
+    └── <Cluster> kind-cluster1
+    └── <Number of Manifests> 2
+    └── <Applied> True
+    └── <Available> True
+```
+
+```
+kubectl config get-contexts
+
+CURRENT   NAME                 CLUSTER              AUTHINFO             NAMESPACE
+*         kind-hub-cluster     kind-hub-cluster     kind-hub-cluster
+          kind-kind-cluster1   kind-kind-cluster1   kind-kind-cluster1
+```
+
+```
+kubectl config use-context kind-kind-cluster1
+
+Switched to context "kind-kind-cluster1".
+```
+
+```
+kubectl get all -n default
+
+NAME                                    READY   STATUS    RESTARTS   AGE
+pod/nginx-deployment-7d85b77c5d-5fmjr   1/1     Running   0          7m51s
+pod/nginx-deployment-7d85b77c5d-fxjr8   1/1     Running   0          7m51s
+pod/nginx-deployment-7d85b77c5d-lkww7   1/1     Running   0          7m51s
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   53m
+
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nginx-deployment   3/3     3            3           7m52s
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/nginx-deployment-7d85b77c5d   3         3         3       7m51s
+```
