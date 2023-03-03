@@ -1,6 +1,33 @@
 # OCM - CLUSTERS ENVIRONMENT SETUP (KIND)
 
-## HUB CLUSTER CREATION
+OCM clusters environemnt created with [kind](https://kind.sigs.k8s.io/)
+
+![local environment using VMs](../docs/env1.png)
+
+This environment has been created launching 3 virtual machines ([Vagrant](https://www.vagrantup.com/)) with Ubuntu 20.04 using the following configuration (Vagantfile):
+
+```
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-20.04"
+  config.vm.network "public_network", ip: "192.168.1.xxx"
+end
+```
+
+Once the virtual machines have been configured properly (kubectl, kind, clusteradm, etc) we can start to create the OCM multicluster test environment.
+
+**VM 1**: 8 GB of memory, 4 cpu cores 
+
+**VM 2**: 4 GB of memory, 2 cpu cores
+
+**VM 3**: 1 GB of memory, 2 cpu cores
+
+---------------------------------
+
+## 1. HUB CLUSTER CREATION
+
+Requirements: *Kubectl*, *kustomize*, *clusteradm*  (see https://open-cluster-management.io/getting-started/installation/start-the-control-plane/ )
+
+First we create the **hub cluster** using a custom configuration file:
 
 **cluster-hub-config.yaml**:
 
@@ -18,21 +45,21 @@ networking:
   #apiServerPort: 6443
 ```
 
-Create cluster with Kind:
+Then we create the cluster with **Kind**:
 
 ```
 kind create cluster --config=cluster-hub-config.yaml
 ```
 
-This execution generates the command needed to join the hub cluster
+This execution generates the command needed to join the hub cluster. Once we have the hub ready we can proceed with the managed clusters.
 
 ---------------------------------
 
-## CREATION OF A MANAGED CLUSTER (MicroK8s)
+## 2. CREATION OF A MANAGED CLUSTER (MicroK8s)
 
-First of all create a new VM with [MicroK8s](https://microk8s.io/)
+This VM requires *Kubectl*, *kustomize*, *clusteradm* (see https://open-cluster-management.io/getting-started/installation/register-a-cluster/ )
 
-Install MicroK8s on Linux
+We install [MicroK8s](https://microk8s.io/) in **VM 2**
 
 ```
 sudo snap install microk8s --classic
@@ -89,10 +116,10 @@ Join hub using command generated in step 1
 https://open-cluster-management.io/getting-started/installation/register-a-cluster/
 
 ```
-clusteradm join --hub-token eyJhbGciOiJSUzI1NiIsImtpZCI6IlVhOUItRVNzSXJremcxLVoyb1NHT042WnVkTGJhRWc2VjAwWUhzb0dPTzgifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3Nzc1ODUyLCJpYXQiOjE2Nzc3NzIyNTIsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJvcGVuLWNsdXN0ZXItbWFuYWdlbWVudCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJjbHVzdGVyLWJvb3RzdHJhcCIsInVpZCI6ImQ0NWQzZDBlLTAwNzEtNGZhZi05MzE4LWE1N2E5YTc3MTM4YSJ9fSwibmJmIjoxNjc3NzcyMjUyLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6b3Blbi1jbHVzdGVyLW1hbmFnZW1lbnQ6Y2x1c3Rlci1ib290c3RyYXAifQ.qz2SNvLtrUORI-2g-BOdMj8cr_foARPtp3nUMm-FTfSHuyP7J4Rac2MG8PoOguw2eoHcDVbEn0ACiSNAU2lj4nDGk1dHK-_AzWEuNL_-wfT06Jkq4fg-YgK9MGz90PT41Cpx35Z5uxNpy6YAu2Mqqvw58WONBQAYbia6L5d2EwyYnxV45TaC3WqiYhwFRU47fUIVS7R7qwAeSR_obS1yFFEb2-lMvAK7Gy9xjN417w9UeRgxFNanc2GL9bzszHWEr3qYaoCcWYXgvugNPIPtnc1bMQ3tNuDJqnhJQwvBjd-VF5f0U2rHRxbjtTNKKHqERc-RbF8snDsbpvosa-wYpA --hub-apiserver https://192.168.1.151:32911 --wait --cluster-name microk8s-cluster --context microk8s
+clusteradm join --hub-token eyJhb...vosa-wYpA --hub-apiserver https://192.168.1.151:32911 --wait --cluster-name microk8s-cluster --context microk8s
 ```
 
-TODO: error
+**TODO**: error
 
 ```
 W0302 16:11:39.848114   80100 exec.go:110] Failed looking for cluster endpoint for the registering klusterlet: configmaps "cluster-info" not found
@@ -106,9 +133,9 @@ Please log onto the hub cluster and run the following command:
   
 ---------------------------------
 
-## HUB - REGISTRATION OF MANAGED CLUSTER (MicroK8s)
+## 3. HUB - REGISTRATION OF MANAGED CLUSTER (MicroK8s)
 
-Accept registration
+Accept registration in **hub-cluster**
 
 ```
 clusteradm accept --clusters microk8s-cluster
@@ -129,7 +156,7 @@ clusteradm get clusters
 
 ---------------------------------
 
-## CREATION OF A SECOND MANAGED CLUSTER (Kind, local)
+## 4. CREATION OF A SECOND MANAGED CLUSTER (Kind, local)
 
 Cluster creation:
 
@@ -221,6 +248,11 @@ CURRENT   NAME                 CLUSTER              AUTHINFO             NAMESPA
 *         kind-hub-cluster     kind-hub-cluster     kind-hub-cluster
           kind-kind-cluster1   kind-kind-cluster1   kind-kind-cluster1
 ```
+
+---------------------------------
+
+## 5. CREATION OF A THIRD MANAGED CLUSTER (k3s)
+
 
 ---------------------------------
 
