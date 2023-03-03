@@ -19,9 +19,9 @@ Once the virtual machines have been configured properly (kubectl, kind, clustera
 
 **VM 2**: 4 GB of memory, 2 cpu cores; *microk8s-cluster*
 
-**VM 3**: 1 GB of memory, 2 cpu cores
+**VM 3**: 1 GB of memory, 2 cpu cores; *k3s-cluster*
 
-**Clusters**: *microk8s-cluster*, *kind-cluster2* and *kind-cluster1*
+OCM testbed environment with 4 managed **clusters**: *microk8s-cluster*, *k3s-cluster*, *kind-cluster2* and *kind-cluster1*
 
 ```
 <ManagedCluster>
