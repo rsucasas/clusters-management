@@ -226,4 +226,51 @@ CURRENT   NAME                 CLUSTER              AUTHINFO             NAMESPA
 
 ## APPLICATION DEPLOYMENT (Nginx)
 
+### App deployment using **clusteradm** command
+
+1. create deployment file (_appdeployment.yaml_)
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  namespace: default
+  name: my-sa
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      serviceAccountName: my-sa
+      containers:
+        - name: nginx
+          image: nginx:1.14.2
+          ports:
+            - containerPort: 80
+```
+
+2. execute the following command to deploy the application in the selected cluster
+
+```
+clusteradm create work my-first-work -f appdeployment.yaml --clusters microk8s-cluster
+
+create work my-first-work in cluster microk8s-cluster
+```
+
+### App deployment using Manifests
+
+
 
