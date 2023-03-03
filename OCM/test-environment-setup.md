@@ -15,11 +15,41 @@ end
 
 Once the virtual machines have been configured properly (kubectl, kind, clusteradm, etc) we can start to create the OCM multicluster test environment.
 
-**VM 1**: 8 GB of memory, 4 cpu cores 
+**VM 1**: 8 GB of memory, 4 cpu cores; kind-cluster2 and kind-cluster1 
 
-**VM 2**: 4 GB of memory, 2 cpu cores
+**VM 2**: 4 GB of memory, 2 cpu cores; microk8s-cluster
 
 **VM 3**: 1 GB of memory, 2 cpu cores
+
+Clusters: microk8s-cluster, kind-cluster2 and kind-cluster1
+
+```
+<ManagedCluster>
+└── <kind-cluster1>
+│   ├── <Accepted> true
+│   ├── <Available> True
+│   ├── <ClusterSet> default
+│   ├── <KubernetesVersion> v1.25.3
+│   ├── <Capacity>
+│       └── <Cpu> 4
+│       └── <Memory> 8148284Ki
+└── <kind-cluster2>
+│   ├── <Accepted> true
+│   ├── <Available> True
+│   ├── <ClusterSet> default
+│   ├── <KubernetesVersion> v1.25.3
+│   ├── <Capacity>
+│       └── <Memory> 8148284Ki
+│       └── <Cpu> 4
+└── <microk8s-cluster>
+    └── <Available> True
+    └── <ClusterSet> default
+    └── <KubernetesVersion> v1.26.1
+    └── <Capacity>
+    │   ├── <Memory> 4026140Ki
+    │   ├── <Cpu> 2
+    └── <Accepted> true
+```
 
 ---------------------------------
 
@@ -156,9 +186,11 @@ clusteradm get clusters
 
 ---------------------------------
 
-## 4. CREATION OF A SECOND MANAGED CLUSTER (Kind, local)
+## 4. CREATION OF 2 MANAGED CLUSTER (Kind, local)
 
-Cluster creation:
+Creation of *kind-cluster1* and *kind-cluster2*. To create these two test clusters repeat the following steps:
+
+**1-** Cluster creation:
 
 ```
 kind create cluster --name kind-cluster1
@@ -180,7 +212,7 @@ kubectl cluster-info --context kind-kind-cluster1
 Have a nice day!
 ```
 
-Join new cluster
+**2-** Join new cluster
 
 ```
 clusteradm join --hub-token eyJhbGciOiJSUzI1NiIsImtpZCI6IlVhOUItRVNzSXJremcxLVoyb1NHT042WnVkTGJhRWc2VjAwWUhzb0dPTzgifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc3ODQxNTUyLCJpYXQiOjE2Nzc4Mzc5NTIsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJvcGVuLWNsdXN0ZXItbWFuYWdlbWVudCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJjbHVzdGVyLWJvb3RzdHJhcCIsInVpZCI6ImQ0NWQzZDBlLTAwNzEtNGZhZi05MzE4LWE1N2E5YTc3MTM4YSJ9fSwibmJmIjoxNjc3ODM3OTUyLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6b3Blbi1jbHVzdGVyLW1hbmFnZW1lbnQ6Y2x1c3Rlci1ib290c3RyYXAifQ.pBk54c2o58zzt_ZPq8TBLI8bzsf1M9-olyGZ7tUV2nQI2coSODUIqRlqoU4sTynoLFiArhfV2-QUF14LP11OoDao-wEPaQtRNNeIESTQcgzlY5xbj31L_n3tsYdzQYUqkC_D8X41u2lHn_zzzlAVkNBaQgPv0JnXA9-naVkCTrIphdJbKx40fjDNaRPGw6ABM03PTAYTGYEBzhBmr1swNupO2gLbdPtg-orr-q5q2dxn0PDZysa07DOmSIzPrinUeYoU9IsUN90dwOmvnqVz4jlRx2RcNMrEY_AvkISibVJGKUUeUPfH3rnTTJ6PwQGj2KhTXLm2fZzuH6Y_8sgqMg --hub-apiserver https://192.168.1.151:32911 --cluster-name kind-cluster1
@@ -192,13 +224,13 @@ Please log onto the hub cluster and run the following command:
     clusteradm accept --clusters kind-cluster1
 ```
 
-Cluster is created in same machine as hub, so we need to change the context again to accept the new cluster as a managed cluster
+**3-** Cluster is created in same machine as hub, so we need to change the context again to accept the new cluster as a managed cluster
 
 ```
 kubectl config use-context kind-hub-cluster
 ```
 
-Accept new cluster
+**4-** Accept new cluster
 
 ```
 clusteradm accept --clusters kind-cluster1
@@ -209,7 +241,7 @@ set hubAcceptsClient to true for managed cluster kind-cluster1
  Your managed cluster kind-cluster1 has joined the Hub successfully. Visit https://open-cluster-management.io/scenarios or https://github.com/open-cluster-management-io/OCM/tree/main/solutions for next steps.
 ```
 
-Check status of environment:
+**5-** Check status of environment:
 
 ```
 kind get clusters
@@ -253,6 +285,17 @@ CURRENT   NAME                 CLUSTER              AUTHINFO             NAMESPA
 
 ## 5. CREATION OF A THIRD MANAGED CLUSTER (k3s)
 
+Instal [k3s](https://k3s.io/) in a new VM.
+
+```
+curl -sfL https://get.k3s.io | sh -
+```
+
+Join k3s to **hub**.
+
+```
+
+```
 
 ---------------------------------
 
