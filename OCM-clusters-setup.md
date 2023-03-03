@@ -272,6 +272,12 @@ clusteradm create work my-first-work -f appdeployment.yaml --clusters microk8s-c
 create work my-first-work in cluster microk8s-cluster
 ```
 
+To remove application:
+
+```
+
+```
+
 ### App deployment using Manifests
 
 Application deployment in cluster **kind-cluster1**
@@ -368,4 +374,12 @@ deployment.apps/nginx-deployment   3/3     3            3           7m52s
 
 NAME                                          DESIRED   CURRENT   READY   AGE
 replicaset.apps/nginx-deployment-7d85b77c5d   3         3         3       7m51s
+```
+
+To remove application:
+
+```
+kubectl delete manifestwork example-manifestwork -n kind-cluster1
+
+manifestwork.work.open-cluster-management.io "example-manifestwork" deleted
 ```
