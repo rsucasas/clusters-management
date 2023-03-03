@@ -25,6 +25,22 @@ Once the virtual machines have been configured properly (kubectl, kind, clustera
 
 ```
 <ManagedCluster>
+└── <microk8s-cluster>
+│   ├── <KubernetesVersion> v1.26.1
+│   ├── <Capacity>
+│   │   ├── <Memory> 4026140Ki
+│   │   ├── <Cpu> 2
+│   ├── <Accepted> true
+│   ├── <Available> True
+│   ├── <ClusterSet> default
+└── <k3s-cluster>
+│   ├── <KubernetesVersion> v1.25.6+k3s1
+│   ├── <Capacity>
+│   │   ├── <Cpu> 2
+│   │   ├── <Memory> 1000108Ki
+│   ├── <Accepted> true
+│   ├── <Available> True
+│   ├── <ClusterSet> default
 └── <kind-cluster1>
 │   ├── <Accepted> true
 │   ├── <Available> True
@@ -34,21 +50,13 @@ Once the virtual machines have been configured properly (kubectl, kind, clustera
 │       └── <Cpu> 4
 │       └── <Memory> 8148284Ki
 └── <kind-cluster2>
-│   ├── <Accepted> true
-│   ├── <Available> True
-│   ├── <ClusterSet> default
-│   ├── <KubernetesVersion> v1.25.3
-│   ├── <Capacity>
-│       └── <Memory> 8148284Ki
-│       └── <Cpu> 4
-└── <microk8s-cluster>
-    └── <Available> True
     └── <ClusterSet> default
-    └── <KubernetesVersion> v1.26.1
+    └── <KubernetesVersion> v1.25.3
     └── <Capacity>
-    │   ├── <Memory> 4026140Ki
-    │   ├── <Cpu> 2
+    │   ├── <Cpu> 4
+    │   ├── <Memory> 8148284Ki
     └── <Accepted> true
+    └── <Available> True
 ```
 
 ---------------------------------
@@ -283,7 +291,7 @@ CURRENT   NAME                 CLUSTER              AUTHINFO             NAMESPA
 
 ---------------------------------
 
-## 5. CREATION OF A THIRD MANAGED CLUSTER (k3s)
+## 5. CREATION OF A FOURTH MANAGED CLUSTER (k3s)
 
 Instal [k3s](https://k3s.io/) in a new VM.
 
@@ -291,10 +299,65 @@ Instal [k3s](https://k3s.io/) in a new VM.
 curl -sfL https://get.k3s.io | sh -
 ```
 
+Create a kube config file
+
+```
+cd $HOME
+mkdir .kube
+cd .kube
+sudo cp /etc/rancher/k3s/k3s.yaml ./config
+sudo chmod 777 config
+```
+
 Join k3s to **hub**.
 
 ```
+clusteradm join --hub-token eyJhbGciOiJSUzI1NiIsImtpZCI6IlVhOUItRVNzSXJremcxLVoyb1NHT....Pmcstoeu4WAFQ --hub-apiserver https://192.168.1.151:32911 --cluster-name k3s-cluster
 
+W0303 15:05:27.670572    4665 exec.go:110] Failed looking for cluster endpoint for the registering klusterlet: configmaps "cluster-info" not found
+Please log onto the hub cluster and run the following command:
+
+    clusteradm accept --clusters k3s-cluster
+```
+
+Repeat steps from section 3.
+
+```
+ clusteradm get clusters
+ 
+<ManagedCluster>
+└── <microk8s-cluster>
+│   ├── <KubernetesVersion> v1.26.1
+│   ├── <Capacity>
+│   │   ├── <Memory> 4026140Ki
+│   │   ├── <Cpu> 2
+│   ├── <Accepted> true
+│   ├── <Available> True
+│   ├── <ClusterSet> default
+└── <k3s-cluster>
+│   ├── <KubernetesVersion> v1.25.6+k3s1
+│   ├── <Capacity>
+│   │   ├── <Cpu> 2
+│   │   ├── <Memory> 1000108Ki
+│   ├── <Accepted> true
+│   ├── <Available> True
+│   ├── <ClusterSet> default
+└── <kind-cluster1>
+│   ├── <Accepted> true
+│   ├── <Available> True
+│   ├── <ClusterSet> default
+│   ├── <KubernetesVersion> v1.25.3
+│   ├── <Capacity>
+│       └── <Cpu> 4
+│       └── <Memory> 8148284Ki
+└── <kind-cluster2>
+    └── <ClusterSet> default
+    └── <KubernetesVersion> v1.25.3
+    └── <Capacity>
+    │   ├── <Cpu> 4
+    │   ├── <Memory> 8148284Ki
+    └── <Accepted> true
+    └── <Available> True
 ```
 
 ---------------------------------
