@@ -2,6 +2,12 @@
 
 Application: https://github.com/rsucasas/app-fleet-demo
 
+See also ...
+
+- https://github.com/open-cluster-management-io/multicloud-operators-subscription/blob/main/docs/gitrepo_subscription.md
+- https://github.com/open-cluster-management-io/placement
+- https://github.com/open-cluster-management-io/multicloud-operators-subscription/tree/main/examples
+
 ### Requirements
 
 [Application lifecycle management operator](https://open-cluster-management.io/getting-started/integration/app-lifecycle/)
