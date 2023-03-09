@@ -5,6 +5,10 @@
 **2-** About the OCM addon ...
 
 - https://github.com/open-cluster-management-io/multicloud-operators-subscription/blob/main/docs/gitrepo_subscription.md
+
+Placement definitions:
+
+- https://github.com/stolostron/multicloud-operators-placementrule/tree/main/examples
 - https://github.com/open-cluster-management-io/placement
 - https://github.com/stolostron/multicloud-operators-placementrule/blob/main/deploy/crds/apps.open-cluster-management.io_placementrules_crd.yaml
 
