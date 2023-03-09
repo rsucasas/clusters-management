@@ -1,11 +1,15 @@
 ## Demo application deployment
 
-Application: https://github.com/rsucasas/app-fleet-demo
+**1-** Demo application: https://github.com/rsucasas/app-fleet-demo
 
-See also ...
+**2-** About the OCM addon ...
 
 - https://github.com/open-cluster-management-io/multicloud-operators-subscription/blob/main/docs/gitrepo_subscription.md
 - https://github.com/open-cluster-management-io/placement
+- https://github.com/stolostron/multicloud-operators-placementrule/blob/main/deploy/crds/apps.open-cluster-management.io_placementrules_crd.yaml
+
+Examples:
+
 - https://github.com/open-cluster-management-io/multicloud-operators-subscription/tree/main/examples
 
 ### Requirements
