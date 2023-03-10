@@ -46,8 +46,85 @@ Examples:
 
 [Application lifecycle management operator](https://open-cluster-management.io/getting-started/integration/app-lifecycle/)
 
+-------------------------------
+  
+### Clustersets
+  
+```
+clusteradm get clusters
+  
+<ManagedCluster>
+└── <k3s-cluster>
+│   ├── <Capacity>
+│   │   ├── <Memory> 1000108Ki
+│   │   ├── <Cpu> 2
+│   ├── <Accepted> true
+│   ├── <Available> Unknown
+│   ├── <ClusterSet> edge
+│   ├── <KubernetesVersion> v1.25.6+k3s1
+└── <kind-cluster1>
+│   ├── <Capacity>
+│   │   ├── <Memory> 8148284Ki
+│   │   ├── <Cpu> 4
+│   ├── <Accepted> true
+│   ├── <Available> True
+│   ├── <ClusterSet> default
+│   ├── <KubernetesVersion> v1.25.3
+└── <kind-cluster2>
+│   ├── <Capacity>
+│   │   ├── <Cpu> 4
+│   │   ├── <Memory> 8148284Ki
+│   ├── <Accepted> true
+│   ├── <Available> True
+│   ├── <ClusterSet> default
+│   ├── <KubernetesVersion> v1.25.3
+└── <microk8s-cluster>
+    └── <Accepted> true
+    └── <Available> True
+    └── <ClusterSet> default
+    └── <KubernetesVersion> v1.26.1
+    └── <Capacity>
+        └── <Memory> 4026140Ki
+        └── <Cpu> 2
+```
+  
+```
+clusteradm get clustersets
 
-### Deployment
+<ManagedClusterSet>
+└── <default>
+│   ├── <BoundNamespace> default
+│   ├── <Status> 3 ManagedClusters selected
+└── <edge>
+│   ├── <BoundNamespace> default
+│   ├── <Status> 1 ManagedClusters selected
+└── <global>
+    └── <BoundNamespace> default
+    └── <Status> 4 ManagedClusters selected
+```
+  
+To add one managed cluster to a managed clusterset:
+  
+```
+clusteradm clusterset set edge  --clusters microk8s-cluster
+```
+  
+```
+<ManagedClusterSet>
+└── <default>
+│   ├── <BoundNamespace> default
+│   ├── <Status> 2 ManagedClusters selected
+└── <edge>
+│   ├── <Status> 2 ManagedClusters selected
+│   ├── <BoundNamespace> default
+└── <global>
+    └── <BoundNamespace> default
+    └── <Status> 4 ManagedClusters selected
+```
+
+-------------------------------
+  
+### App deployment
 
 Files needed to deploy the demo application in OCM:
 
@@ -156,8 +233,10 @@ statefulset.apps/rabbitmqserver-server   1/1     2m7s
 NAME                                          ALLREPLICASREADY   RECONCILESUCCESS   AGE
 rabbitmqcluster.rabbitmq.com/rabbitmqserver   True               True               2m8s
 ```
+  
+-------------------------------
 
-### Placement rules
+### Placement rules (examples)
   
 Deploy in all available clusters
   
