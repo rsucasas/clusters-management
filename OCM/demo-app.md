@@ -188,4 +188,18 @@ spec:
   clusterReplicas: 3
 ```
   
+Deploy application in clusterset (like location)
+  
+```yaml
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: rmq-demo-pr
+  namespace: rmq-demo-app-ns
+spec:
+  clusterSelector:
+    matchLabels:
+      cluster.open-cluster-management.io/clusterset: "default"
+```
+  
   
