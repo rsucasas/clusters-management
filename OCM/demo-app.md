@@ -4,6 +4,32 @@
 
 **2-** About the OCM addon ...
 
+- https://github.com/open-cluster-management-io/multicloud-operators-subscription
+
+Addon installation.
+
+Deploy the subscription operator on the hub cluster.
+
+```
+$ kubectl config use-context <hub cluster context> # kubectl config use-context kind-hub
+
+$ clusteradm install hub-addon --names application-manager
+
+$ kubectl -n open-cluster-management get deploy  multicluster-operators-subscription
+NAME                                READY   UP-TO-DATE   AVAILABLE   AGE
+multicluster-operators-subscription   1/1     1            1           25s
+
+$ kubectl -n open-cluster-management wait deploy multicluster-operators-subscription --for condition=available
+```
+
+Enable the subscription add-on for managed cluster. For the value of <managed cluster name>, choose the managed cluster you want to install the add-on to by running the command kubectl get managedclusters on the hub cluster.
+  
+```
+$ clusteradm addon enable --names application-manager --clusters microk8s-cluster
+  
+$ kubectl -n microk8s-cluster get managedclusteraddon
+```
+
 - https://github.com/open-cluster-management-io/multicloud-operators-subscription/blob/main/docs/gitrepo_subscription.md
 
 Placement definitions:
