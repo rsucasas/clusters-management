@@ -159,7 +159,7 @@ rabbitmqcluster.rabbitmq.com/rabbitmqserver   True               True           
 
 ### Placement rules
   
-Available clusters
+Deploy in all available clusters
   
 ```yaml
 apiVersion: apps.open-cluster-management.io/v1
@@ -174,6 +174,18 @@ spec:
     - type: ManagedClusterConditionAvailable
       status: "True"
 ```
+  
+Deploy 3 replicas
 
+```yaml
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: rmq-demo-pr
+  namespace: rmq-demo-app-ns
+spec:
+  clusterSelector: {}
+  clusterReplicas: 3
+```
   
   
