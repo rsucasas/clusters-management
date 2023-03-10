@@ -157,4 +157,23 @@ NAME                                          ALLREPLICASREADY   RECONCILESUCCES
 rabbitmqcluster.rabbitmq.com/rabbitmqserver   True               True               2m8s
 ```
 
+### Placement rules
+  
+Available clusters
+  
+```yaml
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: rmq-demo-pr
+  namespace: default
+spec:
+  clusterSelector: {}
+  # Only selects clusters that are online
+  clusterConditions:
+    - type: ManagedClusterConditionAvailable
+      status: "True"
+```
 
+  
+  
