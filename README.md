@@ -113,13 +113,26 @@ https://github.com/open-cluster-management-io
 
 - docker
 - kind(greater than v0.9.0+, or the latest version is preferred)
-- _kubectl_ and _kustomize_
+- kubectl 
     - https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
-    - https://kubectl.docs.kubernetes.io/installation/kustomize/source/ (requires **GOLANG**)
+- kustomize
+    - https://kubectl.docs.kubernetes.io/installation/kustomize/source/
 - clusteradm
     - https://github.com/open-cluster-management-io/clusteradm
 
+
+```
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+
+curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash
+```
+
 ### Installation
+
+Default installation (creates 1 hub and 2 managed clusters):
 
 ```
 curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/solutions/setup-dev-environment/local-up.sh | bash
