@@ -61,6 +61,21 @@ OCM testbed environment with 4 managed **clusters**: *microk8s-cluster*, *k3s-cl
 
 ---------------------------------
 
+## 0. Requirements
+
+Install the following in all clusters (kubectl, kustomize, clusteradm):
+
+```
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+
+curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash
+```
+
+---------------------------------
+
 ## 1. HUB CLUSTER CREATION
 
 Requirements: *Kubectl*, *kustomize*, *clusteradm*  (see https://open-cluster-management.io/getting-started/installation/start-the-control-plane/ )
@@ -292,6 +307,8 @@ CURRENT   NAME                 CLUSTER              AUTHINFO             NAMESPA
 ---------------------------------
 
 ## 5. CREATION OF A FOURTH MANAGED CLUSTER (k3s)
+
+Requirements: *Kubectl*, *kustomize*, *clusteradm*
 
 Instal [k3s](https://k3s.io/) in a new VM.
 
